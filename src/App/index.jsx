@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary'
+import { ShoppingCartProvider } from '../Context'
 import './App.css'
 
 const Home = lazy(() => import('@src/Pages/Home').then(module => ({ default: module.Home })))
@@ -30,9 +31,11 @@ function App () {
     <ErrorBoundary>
       <BrowserRouter>
         <Suspense>
-          <Layout>
-            <AppRoutes />
-          </Layout>
+          <ShoppingCartProvider>
+            <Layout>
+              <AppRoutes />
+            </Layout>
+          </ShoppingCartProvider>
         </Suspense>
       </BrowserRouter>
     </ErrorBoundary>

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { NavLink } from 'react-router-dom'
+
+const CartIcon = lazy(() => import('@src/Components/CartIcon').then(module => ({default: module.CartIcon})))
 
 export const Navbar = () => {
   const activeDecoration = 'underline underline-offset-4'
@@ -46,7 +48,7 @@ const RightMenu = ({ activeDecoration }) => {
     { to: '/my-orders', text: 'My Orders', className: '' },
     { to: '/my-account', text: 'My Account', className: '' },
     { to: '/sign-in', text: 'Sign In', className: '' },
-    { to: '/shoppcar', text: '🛒', className: '' }
+    { to: '/shoppcar', text: <CartIcon />, className: '' }
   ]
   return (
     <ul className='flex gap-3 items-center'>
