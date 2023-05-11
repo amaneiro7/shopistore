@@ -6,9 +6,7 @@ const XCircleIcon = lazy(() => import('@heroicons/react/24/outline').then(module
 export const ProductDetail = () => {
     const { isProductDetailOpen, openProductDetail } = useContext(ShoppingCartContext)
   return (
-    <>
-        {isProductDetailOpen && 
-            <aside className='flex flex-col fixed right-0 bg-white border border-black rounded-lg w-[360px] h-[calc(100vh-80px)] z-10'>
+        <aside className={`${isProductDetailOpen ? 'flex' : 'hidden'} flex-col fixed right-0 bg-white border border-black rounded-lg w-[360px] h-[calc(100vh-80px)] z-10 transition ease-linear duration-300`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
                 <XCircleIcon 
@@ -16,7 +14,6 @@ export const ProductDetail = () => {
                     onClickCapture={openProductDetail(false)}
                 />
             </div>
-        </aside>}
-    </>
+        </aside>
   )
 }

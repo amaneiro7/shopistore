@@ -1,26 +1,17 @@
-import React, { useCallback } from 'react'
-import { getProductsList } from '../services/api'
+import { useEffect, useState } from 'react'
 
-export const useGetProducts = ({endpoint}) => {
+export const useGetProducts = ({ endpoint = 'products' }) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [, setError] = useState(null)
-    const previousEndpoint = useRef(endpoint)
-
-    const getProducts = useCallback(async ({endpoint}) => {
-        if (endpoint === previousEndpoint.current) return
-
-        try {
-            setLoading(true)
-            setError(null)
-            previousEndpoint.current = endpoint
-            const newPorducts = await getProductsList({endpoint})
-            setProducts(newPorducts)
-        } catch (error) {
-            setError(error.message)
-        } finally {
-            setLoading(false)
-        }
-    }, [])
-  return { products, loading, getProducts }
+  useEffect(() => {
+    setLoading(true)
+    setError(null)
+    import('@src/services/api')
+      .then(module => module.getProductsList({ endpoint }))
+      .then(data => setProducts(data))
+      .catch(error => setError(error))
+      .finally(() => setLoading(false))
+  }, [endpoint])
+  return { products, loading }
 }

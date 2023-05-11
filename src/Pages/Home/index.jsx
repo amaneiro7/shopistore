@@ -1,15 +1,11 @@
-import React, { lazy, useEffect, useState } from 'react'
+import React, { lazy, useContext } from 'react'
+import { ShoppingCartContext } from '@src/Context'
 
 const Card = lazy(() => import('@src/Components/Card').then(module => ({ default: module.Card })))
 const ProductDetail = lazy(() => import('@src/Components/ProductDetail').then(module => ({ default: module.ProductDetail })))
 
 export const Home = () => {
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    import('@src/services/api')
-      .then(module => module.getProductsList({endpoint: 'products'}))
-      .then(data => setProducts(data))
-  }, [])
+  const { products } = useContext(ShoppingCartContext)
   return (
     <>
       <div>Home</div>
