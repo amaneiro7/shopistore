@@ -3,7 +3,8 @@ import { ShoppingCartContext } from '@src/Context'
 
 const PlusCircleIcon = lazy(() => import('@heroicons/react/24/outline').then(module => ({default: module.PlusCircleIcon})))
 
-export const Card = ({title, price, description, images, category}) => {
+export const Card = (item) => {
+    const {title, price, description, images, category} = item
     const {addCounter, openProductDetail} = useContext(ShoppingCartContext)    
   return (
     <div className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
@@ -13,7 +14,7 @@ export const Card = ({title, price, description, images, category}) => {
                 className='w-full h-full object-cover rounded-lg hover:scale-110 transition ease-in-out duration-300'
                 src={images[0]}
                 alt={title}
-                onClick={openProductDetail(true)}
+                onClick={openProductDetail(item)}
             />
             <PlusCircleIcon 
                 className='absolute top-0 right-0 w-6 h-6 m-2 bg-white/40 rounded-full'

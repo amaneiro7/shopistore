@@ -28,7 +28,7 @@ const AppRoutes = () => {
 
 function App () {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary fallback={<p>Ha Ocurrido un error</p>}>
       <BrowserRouter>
         <Suspense>
           <ShoppingCartProvider>
