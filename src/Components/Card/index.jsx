@@ -4,8 +4,8 @@ import { ShoppingCartContext } from '@src/Context'
 const PlusCircleIcon = lazy(() => import('@heroicons/react/24/outline').then(module => ({default: module.PlusCircleIcon})))
 
 export const Card = (item) => {
-    const {title, price, description, images, category} = item
-    const {addCounter, openProductDetail} = useContext(ShoppingCartContext)    
+    const {title, price, images, category} = item
+    const {addCounter, openProductDetail, addProduct} = useContext(ShoppingCartContext)    
   return (
     <div className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
         <figure className='relative mb-2 w-full h-4/5'>
@@ -18,7 +18,7 @@ export const Card = (item) => {
             />
             <PlusCircleIcon 
                 className='absolute top-0 right-0 w-6 h-6 m-2 bg-white/40 rounded-full'
-                onClick={addCounter}
+                onClick={() => addProduct(item)}
             />        
         </figure>
         <p className='flex justify-between'>

@@ -7,7 +7,7 @@ export const ProductDetail = () => {
     const { isProductDetailOpen, closeOpenProductDetail, productToShow } = useContext(ShoppingCartContext)
     const { title, price, description, images, id } = productToShow
   return (
-        <aside className={`${isProductDetailOpen ? 'flex' : 'hidden'} flex-col fixed right-0 bg-white border border-black rounded-lg w-[360px] h-[calc(100vh-80px)] z-10 transition ease-linear duration-300`}>
+        <aside className={`${isProductDetailOpen ? 'flex' : 'hidden'} flex-col fixed right-0 bg-white border border-black rounded-lg w-[360px] h-fit z-10 transition ease-linear duration-300`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
                 <XCircleIcon 
@@ -17,13 +17,13 @@ export const ProductDetail = () => {
             </div>
             <figure className='px-6'>
                 <img 
-                    className='h-full aspect-video rounded-lg object-cover'
+                    className='h-full w-full rounded-lg object-contain'
                     src={images[0]}
                     alt={title}
                 />
             </figure>
             <p className='flex flex-col p-6'>
-                <span>{price}</span>
+                <span>${price}</span>
                 <span>{title}</span>
                 <span>{description}</span>
             </p>
