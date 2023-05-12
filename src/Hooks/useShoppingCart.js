@@ -10,9 +10,9 @@ export const useShoppingCart = () => {
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
 
   const addProduct = payload => {
-    const productIndex = cart.findIndex(product => product === product.id)
+    const productIndex = cart.findIndex(product => product.id === payload.id)
     let newCart = []
-    if (productIndex !== -1) {
+    if (productIndex >= 0) {
       newCart = [...cart]
       newCart[productIndex].quantity++
       newCart[productIndex].price = payload.price + newCart[productIndex].price
