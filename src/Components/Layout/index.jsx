@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <CheckoutSideMenu/>
+      <CheckoutSideMenu />
       <main className='flex flex-col items-center'>
         {children}
       </main>

@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import { NavLink } from 'react-router-dom'
 
-const CartIcon = lazy(() => import('@src/Components/CartIcon').then(module => ({default: module.CartIcon})))
+const CartIcon = lazy(() => import('@src/Components/CartIcon').then(module => ({ default: module.CartIcon })))
 
 export const Navbar = () => {
   const activeDecoration = 'underline underline-offset-4'

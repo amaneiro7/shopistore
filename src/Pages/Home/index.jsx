@@ -9,15 +9,15 @@ export const Home = () => {
   return (
     <>
       <div>Home</div>
-      <section className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+      <section className='grid gap-4 grid-cols-[repeat(auto-fit,_minmax(200px,_240px))] w-full max-w-screen-lg'>
         {products?.map(product => (
-          <Card 
+          <Card
             key={product.id}
             {...product}
           />
         ))}
       </section>
-      <ProductDetail/>
+      <ProductDetail />
     </>
   )
 }
