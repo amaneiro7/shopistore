@@ -60,8 +60,7 @@ const deleteProduct = (id) => {
   
   //Suma el precio total de todos los productos en el carrito
   const getTotalPrice = (data) => {
-      const price = data.reduce((total, product) => total + product.price, 0)
-      console.log(price);
+    const price = data.reduce((total, product) => total + product.price, 0)      
     setTotalPrice(price)
   }
   

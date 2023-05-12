@@ -37,6 +37,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const {
     order,
+    lastOrder,
     addToOrder
   } = useCheckout({ cart, totalQuantity, totalPrice })
 
@@ -64,6 +65,7 @@ export const ShoppingCartProvider = ({ children }) => {
         closeCheckoutSideMenu,
 
         order,
+        lastOrder,
         addToOrder
       }}
     >

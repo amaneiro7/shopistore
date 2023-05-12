@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ShoppingCartContext } from '@src/Context'
 import './style.css'
 
@@ -6,10 +7,13 @@ const XCircleIcon = lazy(() => import('@heroicons/react/24/outline').then(module
 const OrderCard = lazy(() => import('@src/Components/OrderCard').then(module => ({ default: module.OrderCard })))
 
 export const CheckoutSideMenu = () => {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cart, totalPrice, totalQuantity, cleanCart, addToOrder } = useContext(ShoppingCartContext)
+  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cart, totalPrice, totalQuantity, cleanCart, addToOrder, deleteProduct } = useContext(ShoppingCartContext)
+  const navigate = useNavigate()
   const handleCheckout = () => {
+    closeCheckoutSideMenu()
     addToOrder()
     cleanCart()
+    navigate('/my-order')
   }
   return (
     <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed right-0 bg-white border border-black rounded-lg w-[360px] h-[calc(100vh-80px)] z-20 transition ease-linear duration-300`}>
@@ -25,6 +29,7 @@ export const CheckoutSideMenu = () => {
           <Suspense key={product.id}>
             <OrderCard
               {...product}
+              onClick={deleteProduct}
             />
           </Suspense>
         ))}

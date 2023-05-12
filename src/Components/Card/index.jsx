@@ -17,6 +17,7 @@ export const Card = (item) => {
     addProduct(item)
     closeOpenProductDetail()
   }
+  
   return (
     <div
       className='bg-white cursor-pointer w-56 h-60 rounded-lg'

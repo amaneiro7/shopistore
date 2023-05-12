@@ -1,11 +1,10 @@
-import React, { lazy, useContext } from 'react'
-import { ShoppingCartContext } from '@src/Context'
+import React, { lazy } from 'react'
 
 const XCircleIcon = lazy(() => import('@heroicons/react/24/outline').then(module => ({ default: module.XCircleIcon })))
 
 export const OrderCard = props => {
-  const { id, title, images, price, quantity } = props
-  const { deleteProduct } = useContext(ShoppingCartContext)
+  const { id, title, images, price, quantity, deleteProduct } = props  
+
   return (
     <div className='flex justify-between items-center'>
       <div className='flex items-center justify-center gap-2'>
@@ -23,10 +22,11 @@ export const OrderCard = props => {
       </div>
       <div className='flex items-center gap-2'>
         <p className='text-base font-medium'>${price}</p>
+        {deleteProduct && 
         <XCircleIcon
           className='h-6 w-6 text-black/30 cursor-pointer hover:text-black transition-colors duration-200 ease-in'
           onClick={() => deleteProduct(id)}
-        />
+        />}
       </div>
     </div>
   )
