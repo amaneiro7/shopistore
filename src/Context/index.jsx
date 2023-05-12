@@ -15,10 +15,9 @@ export const ShoppingCartProvider = ({ children }) => {
   const {
     cart,
     addProduct,
-    deleteProduct,
-    showCartList,
+    deleteProduct,    
     totalQuantity,
-    totalPrince,
+    totalPrice,
     isCheckoutSideMenuOpen,
     openCheckoutSideMenu,
     closeCheckoutSideMenu
@@ -37,10 +36,9 @@ export const ShoppingCartProvider = ({ children }) => {
 
         cart,
         addProduct,
-        deleteProduct,
-        showCartList,
+        deleteProduct,        
         totalQuantity,
-        totalPrince,
+        totalPrice,
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu
