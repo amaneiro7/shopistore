@@ -71,10 +71,19 @@ const deleteProduct = (id) => {
     getTotalPrice(data)
   }
 
+  const cleanCart = () => {
+    setCart([])
+    setTotalQuantity(0)
+    setTotalPrice(0)
+  }
+
   return {
     cart,
     addProduct,
-    deleteProduct,    
+    deleteProduct,
+    increaseQuantity,
+    decreaseQuantity,
+    cleanCart,
     totalQuantity,
     totalPrice,
     isCheckoutSideMenuOpen,

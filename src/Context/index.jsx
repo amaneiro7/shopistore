@@ -2,26 +2,43 @@ import { createContext } from 'react'
 import { useGetProducts } from '@src/Hooks/useGetProducts'
 import { useProductToShow } from '@src/Hooks/useProductToShow'
 import { useShoppingCart } from '@src/Hooks/useShoppingCart'
+import { useCheckout } from '../Hooks/useCheckout'
 
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({ children }) => {
   // Show all Products
-  const { products, loading } = useGetProducts({})
+  const { 
+    products, 
+    loading 
+  } = useGetProducts({})
 
   // Show Open Product Detail
-  const { productToShow, isProductDetailOpen, openProductDetail, closeOpenProductDetail } = useProductToShow()
+  const { 
+    productToShow, 
+    isProductDetailOpen, 
+    openProductDetail, 
+    closeOpenProductDetail 
+  } = useProductToShow()
 
   const {
     cart,
     addProduct,
-    deleteProduct,    
+    deleteProduct,
+    increaseQuantity,
+    decreaseQuantity,
+    cleanCart,    
     totalQuantity,
     totalPrice,
     isCheckoutSideMenuOpen,
     openCheckoutSideMenu,
     closeCheckoutSideMenu
   } = useShoppingCart()
+
+  const {
+    order,
+    addToOrder
+  } = useCheckout({ cart, totalQuantity, totalPrice })
 
   return (
     <ShoppingCartContext.Provider
@@ -36,12 +53,18 @@ export const ShoppingCartProvider = ({ children }) => {
 
         cart,
         addProduct,
-        deleteProduct,        
+        deleteProduct,  
+        increaseQuantity,
+        decreaseQuantity,
+        cleanCart,      
         totalQuantity,
         totalPrice,
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
-        closeCheckoutSideMenu
+        closeCheckoutSideMenu,
+
+        order,
+        addToOrder
       }}
     >
       {children}
