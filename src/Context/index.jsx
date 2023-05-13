@@ -2,7 +2,8 @@ import { createContext } from 'react'
 import { useGetProducts } from '@src/Hooks/useGetProducts'
 import { useProductToShow } from '@src/Hooks/useProductToShow'
 import { useShoppingCart } from '@src/Hooks/useShoppingCart'
-import { useCheckout } from '../Hooks/useCheckout'
+import { useCheckout } from '@src/Hooks/useCheckout'
+import { useGetFiltered } from '@src/Hooks/useGetFiltered'
 
 export const ShoppingCartContext = createContext()
 
@@ -36,6 +37,11 @@ export const ShoppingCartProvider = ({ children }) => {
   } = useShoppingCart()
 
   const {
+    handleSearchInput,
+    filteredProducts
+  } = useGetFiltered({ products })
+
+  const {
     orders,
     lastOrder,
     addToOrder
@@ -63,6 +69,9 @@ export const ShoppingCartProvider = ({ children }) => {
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
+
+        handleSearchInput,
+        filteredProducts,
 
         orders,
         lastOrder,

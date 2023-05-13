@@ -4,6 +4,7 @@ export const useGetProducts = ({ endpoint = 'products' }) => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [, setError] = useState(null)
+
   useEffect(() => {
     setLoading(true)
     setError(null)
