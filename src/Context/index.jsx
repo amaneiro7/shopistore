@@ -8,17 +8,17 @@ export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({ children }) => {
   // Show all Products
-  const { 
-    products, 
-    loading 
+  const {
+    products,
+    loading
   } = useGetProducts({})
 
   // Show Open Product Detail
-  const { 
-    productToShow, 
-    isProductDetailOpen, 
-    openProductDetail, 
-    closeOpenProductDetail 
+  const {
+    productToShow,
+    isProductDetailOpen,
+    openProductDetail,
+    closeOpenProductDetail
   } = useProductToShow()
 
   const {
@@ -27,7 +27,7 @@ export const ShoppingCartProvider = ({ children }) => {
     deleteProduct,
     increaseQuantity,
     decreaseQuantity,
-    cleanCart,    
+    cleanCart,
     totalQuantity,
     totalPrice,
     isCheckoutSideMenuOpen,
@@ -36,7 +36,7 @@ export const ShoppingCartProvider = ({ children }) => {
   } = useShoppingCart()
 
   const {
-    order,
+    orders,
     lastOrder,
     addToOrder
   } = useCheckout({ cart, totalQuantity, totalPrice })
@@ -54,17 +54,17 @@ export const ShoppingCartProvider = ({ children }) => {
 
         cart,
         addProduct,
-        deleteProduct,  
+        deleteProduct,
         increaseQuantity,
         decreaseQuantity,
-        cleanCart,      
+        cleanCart,
         totalQuantity,
         totalPrice,
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
 
-        order,
+        orders,
         lastOrder,
         addToOrder
       }}

@@ -1,7 +1,7 @@
-import React from 'react'
-
+import React, { lazy } from 'react'
+const Title = lazy(() => import('@src/Components/Title').then(module => ({ default: module.Title })))
 export const MyAccount = () => {
   return (
-    <div>MyAccount</div>
+    <Title title='My Account' />
   )
 }

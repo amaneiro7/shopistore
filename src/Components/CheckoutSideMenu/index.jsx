@@ -13,7 +13,7 @@ export const CheckoutSideMenu = () => {
     closeCheckoutSideMenu()
     addToOrder()
     cleanCart()
-    navigate('/my-order')
+    navigate('/my-order/last')
   }
   return (
     <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed right-0 bg-white border border-black rounded-lg w-[360px] h-[calc(100vh-80px)] z-20 transition ease-linear duration-300`}>
@@ -36,21 +36,21 @@ export const CheckoutSideMenu = () => {
       </div>
       <div className='flex flex-col gap-3 px-6'>
         <div>
-            <p className='flex items-center justify-between'>
-                <span className='text-base font-light'>Cantidad: </span>
-                <span className='text-lg font-medium'>{totalQuantity}</span>
-            </p>
-            <p className='flex items-center justify-between'>
-                <span className='text-base font-light'>Total: </span>
-                <span className='text-lg font-medium'>${totalPrice}</span>
-            </p>
+          <p className='flex items-center justify-between'>
+            <span className='text-base font-light'>Cantidad: </span>
+            <span className='text-lg font-medium'>{totalQuantity}</span>
+          </p>
+          <p className='flex items-center justify-between'>
+            <span className='text-base font-light'>Total: </span>
+            <span className='text-lg font-medium'>${totalPrice}</span>
+          </p>
         </div>
         <button
-            className='w-full bg-black text-white py-3 mb-6 rounded-lg cursor-pointer hover:bg-black/90 disabled:cursor-not-allowed disabled:bg-black/20'
-            onClick={handleCheckout}
-            disabled={totalQuantity === 0}
+          className='w-full bg-black text-white py-3 mb-6 rounded-lg cursor-pointer hover:bg-black/90 disabled:cursor-not-allowed disabled:bg-black/20'
+          onClick={handleCheckout}
+          disabled={totalQuantity === 0}
         >
-            Checkout
+          Checkout
         </button>
       </div>
     </aside>
