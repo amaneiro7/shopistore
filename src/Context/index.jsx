@@ -4,15 +4,23 @@ import { useProductToShow } from '@src/Hooks/useProductToShow'
 import { useShoppingCart } from '@src/Hooks/useShoppingCart'
 import { useCheckout } from '@src/Hooks/useCheckout'
 import { useGetFiltered } from '@src/Hooks/useGetFiltered'
+import { useGetEndpoint } from '../Hooks/useGetEndpoint'
 
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({ children }) => {
+  // Get all Categories
+  const {
+    categories,
+    endpoint,
+    handleParamsCategory
+  } = useGetEndpoint()
+
   // Show all Products
   const {
     products,
     loading
-  } = useGetProducts({})
+  } = useGetProducts({ endpoint })
 
   // Show Open Product Detail
   const {
@@ -22,6 +30,7 @@ export const ShoppingCartProvider = ({ children }) => {
     closeOpenProductDetail
   } = useProductToShow()
 
+  //
   const {
     cart,
     addProduct,
@@ -37,6 +46,8 @@ export const ShoppingCartProvider = ({ children }) => {
   } = useShoppingCart()
 
   const {
+    searchByTitle,
+    clenInput,
     handleSearchInput,
     filteredProducts
   } = useGetFiltered({ products })
@@ -50,6 +61,9 @@ export const ShoppingCartProvider = ({ children }) => {
   return (
     <ShoppingCartContext.Provider
       value={{
+        categories,
+        handleParamsCategory,
+
         products,
         loading,
 
@@ -70,7 +84,9 @@ export const ShoppingCartProvider = ({ children }) => {
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
 
+        searchByTitle,
         handleSearchInput,
+        clenInput,
         filteredProducts,
 
         orders,

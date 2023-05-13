@@ -16,6 +16,7 @@ const SignIn = lazy(() => import('@src/Pages/SignIn').then(module => ({ default:
 const AppRoutes = () => {
   const routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/:category', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
     // { path: '/my-order', element: <MyOrder /> },
     { path: '/my-order/last', element: <MyOrder /> },

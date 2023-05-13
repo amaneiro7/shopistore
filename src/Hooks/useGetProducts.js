@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 
-export const useGetProducts = ({ endpoint = 'products' }) => {
+export const useGetProducts = ({ endpoint }) => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [, setError] = useState(null)
 
   useEffect(() => {
+    if (!endpoint) return
     setLoading(true)
     setError(null)
     import('@src/services/api')

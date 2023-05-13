@@ -5,18 +5,15 @@ export const useGetFiltered = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState([])
 
   const handleSearchInput = ({ target: { value } }) => setSearchByTitle(value)
-
-  const filteredItemsByTitle = (itemsList, inputToSearch) =>
-    itemsList.filter(item =>
-      item.title.toLowerCase().includes(inputToSearch.toLowerCase()))
-
+  const clenInput = () => setSearchByTitle('')
   useLayoutEffect(() => {
     if (!searchByTitle) {
       setFilteredProducts(products)
     } else {
-      setFilteredProducts(filteredItemsByTitle(products, searchByTitle))
+      import('@src/utils/filteringItems.js')
+        .then(module => setFilteredProducts(module.filteringItems({ itemsList: products, params: 'title', inputToSearch: searchByTitle })))
     }
   }, [searchByTitle, products])
 
-  return { handleSearchInput, filteredProducts }
+  return { searchByTitle, handleSearchInput, filteredProducts, clenInput }
 }
