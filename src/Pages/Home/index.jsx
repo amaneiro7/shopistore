@@ -17,7 +17,8 @@ export const Home = () => {
         onChange={handleSearchInput}
       />
       <section className='grid gap-4 grid-cols-[repeat(auto-fit,_minmax(200px,_240px))] w-full max-w-screen-lg'>
-        {filteredProducts?.map(product => (
+        {!filteredProducts.length && <p>We don't found any coincidence</p>}
+        {filteredProducts && filteredProducts.map(product => (
           <Card
             key={product.id}
             {...product}
