@@ -1,0 +1,15 @@
+.fadein {
+    animation: blurfadein 1s ease-in;
+}
+
+@keyframes blurfadein {
+    from {
+        filter: blur(2px);
+        opacity: 0;
+    }
+
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}

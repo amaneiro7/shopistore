@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary'
-import { ShoppingCartProvider } from '../Context'
+import { ShoppingCartProvider } from '@src/Context'
+import { LoadingPages } from '@src/Components/LoadingPage'
 import './App.css'
 
 const Home = lazy(() => import('@src/Pages/Home').then(module => ({ default: module.Home })))
@@ -18,7 +19,6 @@ const AppRoutes = () => {
     { path: '/', element: <Home /> },
     { path: '/:category', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
-    // { path: '/my-order', element: <MyOrder /> },
     { path: '/my-order/last', element: <MyOrder /> },
     { path: '/my-order/:id', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
@@ -33,7 +33,7 @@ function App () {
   return (
     <ErrorBoundary fallback={<p>Ha Ocurrido un error</p>}>
       <BrowserRouter>
-        <Suspense>
+        <Suspense fallback={<LoadingPages />}>
           <ShoppingCartProvider>
             <Layout>
               <AppRoutes />

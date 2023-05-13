@@ -1,6 +1,7 @@
 import React, { lazy, useContext, useEffect } from 'react'
 import { ShoppingCartContext } from '@src/Context'
 import { useParams } from 'react-router-dom'
+import { LoadingCard } from '@src/Components/LoadingCard'
 
 const Card = lazy(() => import('@src/Components/Card').then(module => ({ default: module.Card })))
 const Title = lazy(() => import('@src/Components/Title').then(module => ({ default: module.Title })))
@@ -8,7 +9,7 @@ const ProductDetail = lazy(() => import('@src/Components/ProductDetail').then(mo
 
 export const Home = () => {
   const params = useParams()
-  const { searchByTitle, handleSearchInput, filteredProducts, handleParamsCategory, clenInput } = useContext(ShoppingCartContext)
+  const { searchByTitle, handleSearchInput, filteredProducts, handleParamsCategory, clenInput, loading } = useContext(ShoppingCartContext)
 
   useEffect(() => {
     handleParamsCategory(params)
@@ -29,9 +30,10 @@ export const Home = () => {
         onChange={handleSearchInput}
       />
       <section className='grid gap-4 grid-cols-[repeat(auto-fit,_minmax(200px,_240px))] w-full max-w-screen-lg'>
-        {!Array.isArray(filteredProducts) && <p>No se encontraron productos en esta categoria</p>}
-        {(Array.isArray(filteredProducts) && !filteredProducts?.length) && <p>We don't found any coincidence</p>}
-        {Array.isArray(filteredProducts) && filteredProducts?.map(product => (
+        {loading && <LoadingCard />}
+        {(!loading && !Array.isArray(filteredProducts)) && <p>No se encontraron productos en esta categoria</p>}
+        {(!loading && (Array.isArray(filteredProducts)) && !filteredProducts?.length) && <p>We don't found any coincidence</p>}
+        {(!loading && Array.isArray(filteredProducts)) && filteredProducts?.map(product => (
           <Card
             key={product.id}
             {...product}
