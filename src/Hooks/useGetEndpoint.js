@@ -25,7 +25,7 @@ export const useGetEndpoint = () => {
     if (!Object.entries(paramsCategory).length) {
       setEndpoint('products')
     } else {
-      const getCategoryId = categories.find(category => category.name.toLowerCase() === paramsCategory.category)
+      const getCategoryId = categories.find(category => category.name.toLowerCase() === paramsCategory.category.toLowerCase())
       setEndpoint(`categories/${getCategoryId?.id}/products`)
     }
   }
