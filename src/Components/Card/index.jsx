@@ -8,7 +8,7 @@ const PlusCircleIcon = lazy(() => import('@heroicons/react/24/outline').then(mod
 
 export const Card = (item) => {
   const { title, price, images, category } = item
-  const { openProductDetail, addProduct, closeCheckoutSideMenu, closeOpenProductDetail } = useContext(ShoppingCartContext)
+  const { openProductDetail, addProduct, closeCheckoutSideMenu, openCheckoutSideMenu, closeOpenProductDetail } = useContext(ShoppingCartContext)
   const [show, element] = useNearScreen()
   const navigate = useNavigate()
 
@@ -21,6 +21,7 @@ export const Card = (item) => {
     event.stopPropagation()
     addProduct(item)
     closeOpenProductDetail()
+    openCheckoutSideMenu()
   }
   const handleCategoryRedirect = (event) => {
     event.stopPropagation()

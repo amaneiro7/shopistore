@@ -42,7 +42,8 @@ export const ShoppingCartProvider = ({ children }) => {
     totalPrice,
     isCheckoutSideMenuOpen,
     openCheckoutSideMenu,
-    closeCheckoutSideMenu
+    closeCheckoutSideMenu,
+    toggleCheckoutSideMenu
   } = useShoppingCart()
 
   const {
@@ -83,6 +84,7 @@ export const ShoppingCartProvider = ({ children }) => {
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
+        toggleCheckoutSideMenu,
 
         searchByTitle,
         handleSearchInput,

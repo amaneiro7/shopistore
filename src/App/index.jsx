@@ -33,13 +33,13 @@ function App () {
   return (
     <ErrorBoundary fallback={<p>Ha Ocurrido un error</p>}>
       <BrowserRouter>
-        <Suspense fallback={<LoadingPages />}>
-          <ShoppingCartProvider>
+        <ShoppingCartProvider>
+          <Suspense fallback={<LoadingPages />}>
             <Layout>
               <AppRoutes />
             </Layout>
-          </ShoppingCartProvider>
-        </Suspense>
+          </Suspense>
+        </ShoppingCartProvider>
       </BrowserRouter>
     </ErrorBoundary>
   )

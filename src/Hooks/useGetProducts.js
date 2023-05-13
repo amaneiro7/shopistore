@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export const useGetProducts = ({ endpoint }) => {
   const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [, setError] = useState(null)
 
   useEffect(() => {

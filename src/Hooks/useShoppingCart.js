@@ -9,6 +9,7 @@ export const useShoppingCart = () => {
   // Funciones que se encargan de abrir y cerrar el menu laterial de las ordenes
   const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
+  const toggleCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(!isCheckoutSideMenuOpen)
 
   // Agrega un producto al carrito, y si ya existe aumenta la cantidad y suma los productos
   const addProduct = payload => {
@@ -23,7 +24,6 @@ export const useShoppingCart = () => {
     }
     setCart(newCart)
     getTotalInfo(newCart)
-    openCheckoutSideMenu()
   }
 
   const increaseQuantity = (id) => {
@@ -87,6 +87,7 @@ export const useShoppingCart = () => {
     totalPrice,
     isCheckoutSideMenuOpen,
     openCheckoutSideMenu,
-    closeCheckoutSideMenu
+    closeCheckoutSideMenu,
+    toggleCheckoutSideMenu
   }
 }

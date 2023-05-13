@@ -47,8 +47,7 @@ const RightMenu = ({ activeDecoration }) => {
     { to: '/email', text: 'johndoe1234@gmail.com', className: 'text-black/60' },
     { to: '/my-orders', text: 'My Orders', className: '' },
     { to: '/my-account', text: 'My Account', className: '' },
-    { to: '/sign-in', text: 'Sign In', className: '' },
-    { to: '/shoppcar', text: <CartIcon />, className: '' }
+    { to: '/sign-in', text: 'Sign In', className: '' }
   ]
   return (
     <ul className='flex gap-3 items-center'>
@@ -65,6 +64,9 @@ const RightMenu = ({ activeDecoration }) => {
           </NavLink>
         </li>
       ))}
+      <li>
+        <CartIcon />
+      </li>
     </ul>
   )
 }
